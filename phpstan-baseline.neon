@@ -1,0 +1,295 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Access to private property Wamailer\\Transport\\SmtpClient\:\:\$responseData\.$#'
+			identifier: property.private
+			count: 1
+			path: admin/config.php
+
+		-
+			message: '#^Anonymous function has an unused use \$lang\.$#'
+			identifier: closure.unusedUse
+			count: 1
+			path: admin/envoi.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$dbname\.$#'
+			identifier: property.notFound
+			count: 1
+			path: admin/upgrade.php
+
+		-
+			message: '#^Call to an undefined method Wanewsletter\\Dblayer\\Wadb\:\:createFunction\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: admin/upgrade.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\PopClient\:\:\$responseData\.$#'
+			identifier: property.protected
+			count: 1
+			path: admin/view.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$dbname\.$#'
+			identifier: property.notFound
+			count: 2
+			path: includes/Dblayer/MysqlBackup.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$host\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/MysqlBackup.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$serverVersion\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/MysqlBackup.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Postgres\:\:\$dbname\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/Postgres.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$dbname\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/PostgresBackup.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$host\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/PostgresBackup.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$serverVersion\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/PostgresBackup.php
+
+		-
+			message: '#^Cannot call method changes\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method close\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method createFunction\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method escapeString\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method exec\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 6
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method fetchArray\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method lastErrorCode\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method lastErrorMsg\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method lastInsertRowID\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Cannot call method query\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: includes/Dblayer/Sqlite3.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$dbname\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/SqliteBackup.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Dblayer\\Wadb\:\:\$libVersion\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/Dblayer/SqliteBackup.php
+
+		-
+			message: '#^Call to method closeCursor\(\) on an unknown class Wanewsletter\\Dblayer\\PDOStatement\.$#'
+			identifier: class.notFound
+			count: 1
+			path: includes/Dblayer/SqlitePdo.php
+
+		-
+			message: '#^Cannot call method fetch\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: includes/Dblayer/SqlitePdo.php
+
+		-
+			message: '#^Cannot call method fetchAll\(\) on object\|resource\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: includes/Dblayer/SqlitePdo.php
+
+		-
+			message: '#^Class Wanewsletter\\Dblayer\\PDOStatement not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: includes/Dblayer/SqlitePdo.php
+
+		-
+			message: '#^Property Wanewsletter\\Dblayer\\SqlitePdo\:\:\$result has unknown class Wanewsletter\\Dblayer\\PDOStatement as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: includes/Dblayer/SqlitePdo.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\Dblayer\\Wadb\:\:\$lastQuery\.$#'
+			identifier: property.protected
+			count: 2
+			path: includes/Output/CommandLine.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\Dblayer\\Wadb\:\:\$sqlstate\.$#'
+			identifier: property.protected
+			count: 2
+			path: includes/Output/CommandLine.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\Dblayer\\Wadb\:\:\$lastQuery\.$#'
+			identifier: property.protected
+			count: 2
+			path: includes/Output/Html.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\Dblayer\\Wadb\:\:\$queries\.$#'
+			identifier: property.protected
+			count: 1
+			path: includes/Output/Html.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\Dblayer\\Wadb\:\:\$sqlstate\.$#'
+			identifier: property.protected
+			count: 2
+			path: includes/Output/Html.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\Dblayer\\Wadb\:\:\$sqltime\.$#'
+			identifier: property.protected
+			count: 2
+			path: includes/Output/Html.php
+
+		-
+			message: '#^Access to protected property Wamailer\\Email\:\:\$headers\.$#'
+			identifier: property.protected
+			count: 2
+			path: includes/Sender.php
+
+		-
+			message: '#^Constant FORMAT_TEXTE not found\.$#'
+			identifier: constant.notFound
+			count: 2
+			path: includes/Subscription.php
+
+		-
+			message: '#^Method Wanewsletter\\Template\:\:pparse\(\) should return string but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/Template.php
+
+		-
+			message: '#^Unsafe access to private property Wanewsletter\\Template\:\:\$useCache through static\:\:\.$#'
+			identifier: staticClassAccess.privateProperty
+			count: 3
+			path: includes/Template.php
+
+		-
+			message: '#^Access to an undefined property Wanewsletter\\Subscription\:\:\$liste_email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Access to protected property Wanewsletter\\PopClient\:\:\$responseData\.$#'
+			identifier: property.protected
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Binary operation "/\=" between string and 1024 results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Binary operation "/\=" between string and 1048576 results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Binary operation "/\=" between string and 1073741824 results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Function Wanewsletter\\wanlog\(\) should return array but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Undefined variable\: \$lang$#'
+			identifier: variable.undefined
+			count: 2
+			path: includes/functions.php
+
+		-
+			message: '#^Undefined variable\: \$prefixe$#'
+			identifier: variable.undefined
+			count: 1
+			path: includes/functions.php
+
+		-
+			message: '#^Variable \$lang in empty\(\) is never defined\.$#'
+			identifier: empty.variable
+			count: 2
+			path: includes/functions.php
+
+		-
+			message: '#^Variable \$prefixe in isset\(\) is never defined\.$#'
+			identifier: isset.variable
+			count: 1
+			path: includes/functions.php

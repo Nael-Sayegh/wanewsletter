@@ -1,0 +1,40 @@
+<?php
+/**
+ * Constantes définies dynamiquement à l’exécution (define() avec un nom
+ * calculé ou dans un contexte que PHPStan ne suit pas).
+ * Ce fichier n’est jamais exécuté : il sert uniquement à l’analyse statique
+ * (voir scanFiles et dynamicConstantNames dans phpstan.neon.dist).
+ */
+
+namespace Wanewsletter {
+	// includes/common.inc.php
+	const DEFAULT_ERROR_REPORTING = E_ALL;
+
+	// includes/functions.php, load_config()
+	const UPDATE_CONFIG_FILE = false;
+
+	// includes/functions.php, load_config() : une constante par table
+	// retournée par get_db_tables() (includes/functions.db.php)
+	const ABO_LISTE_TABLE     = 'wa_abo_liste';
+	const ABONNES_TABLE       = 'wa_abonnes';
+	const ADMIN_TABLE         = 'wa_admin';
+	const AUTH_ADMIN_TABLE    = 'wa_auth_admin';
+	const BAN_LIST_TABLE      = 'wa_ban_list';
+	const CONFIG_TABLE        = 'wa_config';
+	const FORBIDDEN_EXT_TABLE = 'wa_forbidden_ext';
+	const JOINED_FILES_TABLE  = 'wa_joined_files';
+	const LISTE_TABLE         = 'wa_liste';
+	const LOG_TABLE           = 'wa_log';
+	const LOG_FILES_TABLE     = 'wa_log_files';
+	const SESSION_TABLE       = 'wa_session';
+}
+
+namespace {
+	// includes/common.inc.php, newsletter.php, contrib/*.php
+	const WA_ROOTDIR = '/path/to/wanewsletter';
+
+	// admin/tools.php
+	const ZIPLIB_LOADED = true;
+	const ZLIB_LOADED   = true;
+	const BZIP2_LOADED  = true;
+}

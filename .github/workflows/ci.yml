@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  push:
+    branches: [develop, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Syntaxe (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4', '8.5']
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      # Échoue sur les erreurs de syntaxe, mais aussi sur les dépréciations
+      # et avertissements émis à la compilation.
+      - name: php -l
+        run: |
+          status=0
+          while IFS= read -r -d '' file; do
+            out=$(php -d error_reporting=-1 -d display_errors=1 -l "$file" 2>&1) || status=1
+            if ! grep -q '^No syntax errors detected' <<< "$out" || grep -qE 'Deprecated|Warning' <<< "$out"; then
+              echo "::error file=$file::$out"
+              status=1
+            fi
+          done < <(git ls-files -z -- '*.php' 'contrib/wanewsletter')
+          exit $status
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: phpstan:2.3.5
+
+      - name: Dépendances Composer
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      # Configuration : phpstan.neon.dist ; erreurs connues : phpstan-baseline.neon
+      - name: Analyse statique
+        run: phpstan analyse --no-progress --memory-limit=1G --error-format=github
+
+  composer:
+    name: composer validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Validation de composer.json et composer.lock
+        run: composer validate --strict
+
+  audit:
+    name: composer audit
+    runs-on: ubuntu-latest
+    # TinyMCE 5.6.2 est concerné par des avis de sécurité tant que la migration
+    # vers TinyMCE 8 (phase 2) n'est pas faite : le job reste visible en échec
+    # sans faire échouer le workflow. À retirer après la migration.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Avis de sécurité sur les dépendances
+        run: composer audit --locked
