@@ -225,8 +225,10 @@ function wa_check_update($complete = false)
 		$data = trim(file_get_contents($cache_file));
 	}
 	else if ($complete) {
-		$result = http_get_contents(CHECK_UPDATE_URL);
-		$data   = trim($result['data']);
+		$result  = http_get_contents(CHECK_UPDATE_URL);
+		$release = json_decode($result['data'], true);
+		// Retrait du préfixe éventuel du tag (release-x.y.z, vx.y.z)
+		$data    = preg_replace('#^[^0-9]+#', '', trim($release['tag_name'] ?? ''));
 
 		if (!preg_match('#^[0-9]+\.[0-9]+(\.[0-9]+|-[A-Za-z0-9]+)$#', $data)) {
 			throw new Exception("Bad version identifier received!");

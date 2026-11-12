@@ -1,27 +1,37 @@
 {
-	"name": "wascripts/wanewsletter",
+	"name": "nael-sayegh/wanewsletter",
 	"description": "Wanewsletter est un script complet et puissant d’envoi d’emails et de gestion de listes d’envoi",
 	"keywords": ["mailing", "manager", "email"],
-	"homepage": "http://dev.webnaute.net/wanewsletter/",
+	"homepage": "https://github.com/Nael-Sayegh/wanewsletter",
 	"type": "project",
-	"license": "GPL-2.0+",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Aurélien Maille",
 			"email": "wascripts@webnaute.net",
-			"role": "lead developer"
+			"role": "Original author"
+		},
+		{
+			"name": "Nael Sayegh",
+			"homepage": "https://github.com/Nael-Sayegh",
+			"role": "Maintainer"
 		}
 	],
 	"support": {
-		"forum": "https://forum.webnaute.net/",
-		"source": "https://github.com/wascripts/wanewsletter"
+		"issues": "https://github.com/Nael-Sayegh/wanewsletter/issues",
+		"source": "https://github.com/Nael-Sayegh/wanewsletter"
 	},
 	"require": {
-		"php": ">=7.1",
+		"php": ">=8.4",
 		"symfony/polyfill-mbstring": "~1.22.0",
 		"symfony/polyfill-intl-normalizer": "~1.22.0",
-		"wascripts/wamailer": "4.0",
+		"wascripts/wamailer": "^4.0",
 		"tinymce/tinymce": "~5.6.0",
 		"macroman/terminal-progress-bar": "0.1.3"
+	},
+	"config": {
+		"platform": {
+			"php": "8.4.0"
+		}
 	}
 }

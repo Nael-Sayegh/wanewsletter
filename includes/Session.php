@@ -130,7 +130,7 @@ class Session implements \SessionHandlerInterface
 	 *
 	 * @return boolean
 	 */
-	public function open($save_path, $sid)
+	public function open(string $save_path, string $sid): bool
 	{
 		return true;
 	}
@@ -140,7 +140,7 @@ class Session implements \SessionHandlerInterface
 	 *
 	 * @return boolean
 	 */
-	public function close()
+	public function close(): bool
 	{
 		$this->gc();
 		return true;
@@ -153,7 +153,7 @@ class Session implements \SessionHandlerInterface
 	 *
 	 * @return string
 	 */
-	public function read($sid)
+	public function read(string $sid): string|false
 	{
 		global $db;
 
@@ -166,7 +166,8 @@ class Session implements \SessionHandlerInterface
 		$result = $db->query($sql);
 
 		if ($row = $result->fetch()) {
-			return $row['session_data'];
+			// La colonne est nullable : null devient une chaîne vide
+			return (string) $row['session_data'];
 		}
 
 		return '';
@@ -180,7 +181,7 @@ class Session implements \SessionHandlerInterface
 	 *
 	 * @return boolean
 	 */
-	public function write($sid, $data)
+	public function write(string $sid, string $data): bool
 	{
 		global $db;
 
@@ -215,7 +216,7 @@ class Session implements \SessionHandlerInterface
 	 *
 	 * @return boolean
 	 */
-	public function destroy($sid)
+	public function destroy(string $sid): bool
 	{
 		global $db;
 
@@ -234,9 +235,9 @@ class Session implements \SessionHandlerInterface
 	 *
 	 * @param integer $lifetime
 	 *
-	 * @return boolean
+	 * @return integer Nombre de sessions supprimées
 	 */
-	public function gc($lifetime = -1)
+	public function gc(int $lifetime = -1): int|false
 	{
 		global $db;
 
@@ -246,10 +247,12 @@ class Session implements \SessionHandlerInterface
 			time()
 		));
 
-		if ($db->affectedRows() > 0) {
+		$deleted = (int) $db->affectedRows();
+
+		if ($deleted > 0) {
 			$db->vacuum(SESSION_TABLE);
 		}
 
-		return true;
+		return $deleted;
 	}
 }

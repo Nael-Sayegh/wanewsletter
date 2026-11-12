@@ -136,13 +136,11 @@ const CONFIRM_NONE   = 0;
 //
 // Utilisées dans le cadre de la classe de vérification de mise à jour
 //
-const DOWNLOAD_PAGE      = 'https://dev.webnaute.net/wanewsletter/telecharger';
-// Le serveur renvoie le tag de la dernière version stable si WANEWSLETTER_VERSION
-// contient un numéro en x.y.z, ou le tag de la dernière version non stable, si
-// WANEWSLETTER_VERSION contient -dev, -alpha, -beta ou -rc.
-// Vous pouvez forcer l’une ou l’autre réponse en ajoutant le paramètre d’url
-// 'channel' avec la valeur 'stable' ou 'unstable' dans l’url suivante.
-const CHECK_UPDATE_URL   = 'https://dev.webnaute.net/wanewsletter/releases/latest/version';
+const DOWNLOAD_PAGE      = 'https://github.com/Nael-Sayegh/wanewsletter/releases';
+// API GitHub : renvoie, au format JSON, la dernière release publiée et non
+// marquée comme pré-version. Le numéro de version est extrait du nom du tag
+// (formats acceptés : release-x.y.z, vx.y.z ou x.y.z).
+const CHECK_UPDATE_URL   = 'https://api.github.com/repos/Nael-Sayegh/wanewsletter/releases/latest';
 const CHECK_UPDATE_CACHE = 'wa-check-update.cache';
 const CHECK_UPDATE_CACHE_TTL = 3600;
 

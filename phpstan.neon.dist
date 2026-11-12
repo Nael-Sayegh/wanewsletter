@@ -1,0 +1,39 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+	level: 2
+	phpVersion: 80400
+
+	paths:
+		- admin
+		- contrib
+		- includes
+		- options
+		- install.php
+		- newsletter.php
+		- profil_cp.php
+		- subscribe.php
+
+	# Dépendances Composer (composer install requis avant l'analyse)
+	scanDirectories:
+		- vendor/wascripts/wamailer/lib
+		- vendor/macroman/terminal-progress-bar/src
+
+	# Constantes déclarées à l'exécution avec un nom calculé
+	scanFiles:
+		- phpstan-constants.stub
+	dynamicConstantNames:
+		- Wanewsletter\DEFAULT_ERROR_REPORTING
+		- Wanewsletter\UPDATE_CONFIG_FILE
+		- WA_ROOTDIR
+		- ZIPLIB_LOADED
+		- ZLIB_LOADED
+		- BZIP2_LOADED
+
+	# Code procédural : les pages utilisent des variables définies par les
+	# fichiers inclus ($db, $lang, $nl_config…), invisibles pour PHPStan.
+	checkMaybeUndefinedVariables: false
+
+	# Les annotations @param/@return ne sont pas toujours fiables.
+	treatPhpDocTypesAsCertain: false
